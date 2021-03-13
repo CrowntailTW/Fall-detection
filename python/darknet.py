@@ -38,6 +38,7 @@ class METADATA(Structure):
 
 #lib = CDLL("/home/pjreddie/documents/darknet/libdarknet.so", RTLD_GLOBAL)
 lib = CDLL("libdarknet.so", RTLD_GLOBAL)
+
 lib.network_width.argtypes = [c_void_p]
 lib.network_width.restype = c_int
 lib.network_height.argtypes = [c_void_p]
@@ -143,7 +144,7 @@ if __name__ == "__main__":
     start=time.time()
     r = detect(net, meta, "data/cs1.png")
     print('the whole running time is: '+str(time.time()-start))
-    print r
+    print (r)
     res=[]
     for item in r:
         if item[0]=='person' or item[0]=='dog':
